@@ -1,4 +1,4 @@
-package maman12;
+
 
 public class Segment {
 	/**
@@ -193,10 +193,20 @@ public class Segment {
 	 * @return The length of the overlap between this and other segments
 	 */
 	public int overlap(Segment s) {
-		if (s._poLeft.isLeft(_poRight)) {
-			return _poRight.getX() - s._poLeft.getX();
-		} else if (s._poRight.isRight(_poLeft)) {
-			return s._poRight.getX() - _poLeft.getX();
+		if(_poLeft.getX() <= s._poLeft.getX()) {
+			if(_poRight.getX() <= s._poRight.getX() && _poRight.getX() >= s._poLeft.getX()) {
+				return _poRight.getX() - s._poLeft.getX();
+			}
+			if(_poRight.getX() >= s._poRight.getX()) {
+				return s.getLength();
+			}
+		} else {
+			if(_poRight.getX() <= s._poRight.getX()) {
+				return getLength();
+			}
+			if(_poRight.getX() >= s._poRight.getX() && _poLeft.getX() <= s._poRight.getX()) {
+				return s._poRight.getX()  - _poLeft.getX();
+			}
 		}
 		return 0;
 	}

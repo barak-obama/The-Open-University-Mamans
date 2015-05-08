@@ -1,4 +1,4 @@
-package maman12;
+
 
 /**
  * This class represents a two-dimensional point on a grid in the first quadrant
