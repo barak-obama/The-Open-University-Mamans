@@ -1,6 +1,4 @@
-package maman15;
 
-import java.util.Iterator;
 
 /**
  * A data structure used to save information about words from a given text.

@@ -1,4 +1,4 @@
-package maman15;
+
 
 /**
  * Represents a single node of a linked list of words
