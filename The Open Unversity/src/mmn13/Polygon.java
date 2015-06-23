@@ -1,5 +1,7 @@
 package mmn13;
 
+
+
 /**
  * Class Polygon represents a polygon in the first quarter of the 2D space.
  *
@@ -51,7 +53,7 @@ public class Polygon {
 	 */
 	private boolean addVertex(Point1 p) {
 		// check if there is space in the polygon.
-		if (_noOfVertices < MAX_NUM_OF_VERTICES)
+		if (_noOfVertices >= MAX_NUM_OF_VERTICES)
 			return false;
 
 		_vertices[_noOfVertices] = new Point1(p);
@@ -66,7 +68,7 @@ public class Polygon {
 	 * @return a copy of the highest vertex (the point with the largest t
 	 *         coordinate).
 	 */
-	public Point1 highestVertx() {
+	public Point1 highestVertex() {
 		// it there is no vertices so return null
 		if (_noOfVertices == 0)
 			return null;
@@ -124,7 +126,7 @@ public class Polygon {
 	 * 
 	 * @return the area of the polygon.
 	 */
-	private double calcArea() {
+	public double calcArea() {
 		// if there is less than 3 vertices in the polygon the area is 0.
 		if (_noOfVertices < 3) {
 			return 0;
@@ -204,7 +206,8 @@ public class Polygon {
 		Point1 rightest = _vertices[0];
 		Point1 leftest = _vertices[0];
 
-		for (Point1 p : _vertices) {
+		for (int i = 0 ; i < _noOfVertices; i++) {
+			Point1 p = _vertices[i];
 			if (highest.isUnder(p))
 				highest = p;
 			if (lowest.isAbove(p))
@@ -220,7 +223,7 @@ public class Polygon {
 		box.addVertex(leftest.getX(), highest.getY());
 		box.addVertex(leftest.getX(), lowest.getY());
 		box.addVertex(rightest.getX(), lowest.getY());
-		box.addVertex(rightest.getX(), rightest.getY());
+		box.addVertex(rightest.getX(), highest.getY());
 		return box;
 
 	}

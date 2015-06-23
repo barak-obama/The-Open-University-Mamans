@@ -1,5 +1,7 @@
 package mmn13;
 
+
+
 /**
  * This class represents a two-dimensional image in black and white.
  */
